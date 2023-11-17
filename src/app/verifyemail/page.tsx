@@ -40,21 +40,22 @@ export default function VerifyEmailPage() {
 
         {
             verified && (<div>
-                <h2 className="text-2xl">
+                <h2 className="text-2xl mb-4">
                     Email Verified
                 </h2>
-                    <Link href='/login'>
-                        Login
-                    </Link>
-                
+
+                <Link href='/login'>
+                    Login
+                </Link>
+
             </div>)
         }
-        {error  && (<div>
-                <h2 className="text-2xl bg-red-500 text-black">
-                    Error
-                </h2>
-                    
-                
-            </div>)}
+        {error && (<div>
+            <h2 className="text-2xl bg-red-500 text-black">
+                Error
+            </h2>
+
+
+        </div>)}
     </div>)
 }

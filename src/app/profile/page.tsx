@@ -5,28 +5,28 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const Profile = () => {
-  const router=useRouter()
+  const router = useRouter()
   const [user, setUser] = useState("")
-  const getUserData =async ()=>{
+  const getUserData = async () => {
     const res = await axios.get('/api/users/me');
-    
-     const {data:{data:{username=""}={}}={}}=res??{}
+
+    const { data: { data: { username = "" } = {} } = {} } = res ?? {}
     setUser(username)
-    
+
   }
   useEffect(() => {
     getUserData()
   }, [])
-const onLogout=async ()=>{
-  try {
-    await axios.get("/api/users/logout")
-    toast.success("Logout Successful")
-    router.push("/login")
-  } catch (error:any) {
-    console.log("Error: ",error.message)
-    toast.error(error.message)
+  const onLogout = async () => {
+    try {
+      await axios.get("/api/users/logout")
+      toast.success("Logout Successful")
+      router.push("/login")
+    } catch (error: any) {
+
+      toast.error(error.message)
+    }
   }
-}
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <h1>Profile of <span className="border rounded bg-orange-500 text-white px-5 py-2">{user}</span></h1>
